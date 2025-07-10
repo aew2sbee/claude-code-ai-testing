@@ -1,14 +1,12 @@
 # フィボナッチ数列実装 (TypeScript)
 
-フィボナッチ数列を計算するためのTypeScript実装です。反復的アプローチ、再帰的アプローチ、数列生成の3つの関数を提供します。
+フィボナッチ数列を計算するためのTypeScript実装です。効率的な反復的アプローチによる単一の関数を提供します。
 
 ## 概要
 
-このプロジェクトでは、フィボナッチ数列を計算するための3つの異なる方法を実装しています：
+このプロジェクトでは、フィボナッチ数列を計算するための効率的な実装を提供しています：
 
-1. **反復的実装** - 効率的でパフォーマンスの良い実装
-2. **再帰的実装** - 数学的定義に忠実な実装
-3. **数列生成** - 指定された長さの数列を生成
+1. **反復的実装** - 効率的でパフォーマンスの良い実装（時間計算量O(n)、空間計算量O(1)）
 
 ## プロジェクト構成
 
@@ -40,18 +38,13 @@ npm install
 ### 基本的な使用例
 
 ```typescript
-import { fibonacci, fibonacciRecursive, fibonacciSequence } from './src/fibonacci';
+import { fibonacci } from './src/fibonacci';
 
-// 反復的実装（推奨）
+// フィボナッチ数列の計算
 console.log(fibonacci(10));        // 55
 console.log(fibonacci(20));        // 6765
-
-// 再帰的実装（小さな値のみ推奨）
-console.log(fibonacciRecursive(8)); // 21
-console.log(fibonacciRecursive(10)); // 55
-
-// 数列生成
-console.log(fibonacciSequence(10)); // [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+console.log(fibonacci(0));         // 0
+console.log(fibonacci(1));         // 1
 ```
 
 ### コマンドライン
@@ -88,9 +81,7 @@ npm run test:coverage
 - ✅ エラーハンドリング（負の数の入力）
 - ✅ 基本ケース（0, 1の入力）
 - ✅ 正確な計算結果の検証
-- ✅ エッジケース（空の配列、単一要素）
-- ✅ 関数間の一貫性チェック
-- ✅ 統合テスト
+- ✅ 大きな値の処理
 
 ## API リファレンス
 
@@ -100,51 +91,24 @@ npm run test:coverage
 
 - **時間計算量**: O(n)
 - **空間計算量**: O(1)
-- **推奨**: 大きな値に対しても効率的
+- **推奨**: 効率的で大きな値に対しても安定したパフォーマンス
 
 ```typescript
 fibonacci(0);   // 0
 fibonacci(1);   // 1
 fibonacci(5);   // 5
 fibonacci(10);  // 55
+fibonacci(20);  // 6765
 ```
 
-### `fibonacciRecursive(n: number): number`
+## パフォーマンス特性
 
-再帰的なアプローチを使用してn番目のフィボナッチ数を計算します。
-
-- **時間計算量**: O(2^n)
-- **空間計算量**: O(n)
-- **注意**: 大きな値（n > 40）では非常に遅くなります
-
-```typescript
-fibonacciRecursive(0);  // 0
-fibonacciRecursive(1);  // 1
-fibonacciRecursive(5);  // 5
-fibonacciRecursive(8);  // 21
-```
-
-### `fibonacciSequence(length: number): number[]`
-
-指定された長さのフィボナッチ数列を生成します。
-
-- **時間計算量**: O(n)
-- **空間計算量**: O(n)
-
-```typescript
-fibonacciSequence(0);  // []
-fibonacciSequence(1);  // [0]
-fibonacciSequence(5);  // [0, 1, 1, 2, 3]
-fibonacciSequence(8);  // [0, 1, 1, 2, 3, 5, 8, 13]
-```
-
-## パフォーマンス比較
-
-| 実装方法 | 時間計算量 | 空間計算量 | 大きな値での推奨度 |
-|----------|------------|------------|-------------------|
-| 反復的   | O(n)       | O(1)       | ⭐⭐⭐⭐⭐         |
-| 再帰的   | O(2^n)     | O(n)       | ⭐⭐ (n ≤ 40)     |
-| 数列生成 | O(n)       | O(n)       | ⭐⭐⭐⭐           |
+| 特性 | 値 |
+|------|-----|
+| 時間計算量 | O(n) |
+| 空間計算量 | O(1) |
+| 推奨度 | ⭐⭐⭐⭐⭐ |
+| 大きな値への対応 | 優秀 |
 
 ## 開発者向け情報
 
@@ -158,9 +122,9 @@ fibonacciSequence(8);  // [0, 1, 1, 2, 3, 5, 8, 13]
 ### コーディング規約
 
 - TypeScriptの厳密モードを使用
-- JSDocコメントによる詳細な文書化
-- 包括的なテストカバレッジ
-- エラーハンドリングの実装
+- 日本語でのJSDocコメントによる詳細な文書化
+- 100%のテストカバレッジを維持
+- 適切なエラーハンドリングの実装
 
 ### 貢献
 
