@@ -1,25 +1,25 @@
 import { fibonacci } from '../src/fibonacci';
 
 describe('fibonacci', () => {
-  describe('error handling', () => {
-    test('should throw error for negative numbers', () => {
+  describe('エラーハンドリング', () => {
+    test('負の数に対してエラーを投げる', () => {
       expect(() => fibonacci(-1)).toThrow('Fibonacci sequence is not defined for negative numbers');
       expect(() => fibonacci(-5)).toThrow('Fibonacci sequence is not defined for negative numbers');
     });
   });
 
-  describe('base cases', () => {
-    test('should return 0 for fibonacci(0)', () => {
+  describe('基本ケース', () => {
+    test('fibonacci(0)は0を返す', () => {
       expect(fibonacci(0)).toBe(0);
     });
 
-    test('should return 1 for fibonacci(1)', () => {
+    test('fibonacci(1)は1を返す', () => {
       expect(fibonacci(1)).toBe(1);
     });
   });
 
-  describe('iterative calculation', () => {
-    test('should calculate fibonacci numbers correctly', () => {
+  describe('反復的な計算', () => {
+    test('フィボナッチ数を正しく計算する', () => {
       expect(fibonacci(2)).toBe(1);
       expect(fibonacci(3)).toBe(2);
       expect(fibonacci(4)).toBe(3);
@@ -31,7 +31,7 @@ describe('fibonacci', () => {
       expect(fibonacci(10)).toBe(55);
     });
 
-    test('should handle larger fibonacci numbers', () => {
+    test('大きなフィボナッチ数を処理する', () => {
       expect(fibonacci(15)).toBe(610);
       expect(fibonacci(20)).toBe(6765);
     });
